@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rooms - Vista Hotel</title>
+  <style>
+    /* Reset & Base */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f9f9f9;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* Header */
+    header {
+      background: #0a3d62;
+      color: #fff;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 {
+      font-size: 1.8rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      padding-bottom: 4px;
+    }
+    nav a:hover { color: #d4af37; }
+    nav a.active {
+      color: #f1c40f;
+      font-weight: bold;
+      border-bottom: 2px solid #f1c40f;
+    }
+
+    /* Rooms Section */
+    section {
+      max-width: 1100px;
+      margin: 3rem auto;
+      padding: 0 1rem;
+    }
+    section h2 {
+      text-align: center;
+      font-size: 2rem;
+      color: #0a1f44;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Filter */
+    label {
+      font-weight: 600;
+      color: #0a1f44;
+    }
+    #price-filter {
+      margin-left: 0.5rem;
+      padding: 0.5rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      transition: border 0.3s ease;
+    }
+    #price-filter:focus {
+      border-color: #d4af37;
+      outline: none;
+    }
+
+    /* Room Cards */
+    .room-container {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+    .room {
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      width: 320px;
+      padding: 1.5rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+      position: relative;
+    }
+    .room:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+    .room img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 1rem;
+    }
+    .room h3 {
+      color: #0a1f44;
+      margin-bottom: 0.5rem;
+    }
+    .room p {
+      margin-bottom: 0.5rem;
+    }
+    .room strong {
+      color: #d4af37;
+    }
+
+    .status {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: bold;
+      color: #fff;
+    }
+    .available { background: #27ae60; }
+    .booked { background: #e74c3c; }
+
+    .btn {
+      display: inline-block;
+      background: #d4af37;
+      color: #0a1f44;
+      padding: 0.6rem 1.2rem;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      margin-top: 0.5rem;
+    }
+    .btn:hover {
+      background: #fff;
+      color: #0a1f44;
+      border: 2px solid #d4af37;
+    }
+
+    footer {
+      background: #0a3d62;
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Vista Hotel</h1>
+  <nav>
+    <ul>
+      <li><a href="dashboard.html">Home</a></li>
+      <li><a href="room.html">Rooms</a></li>
+      <li><a href="book.html">Book</a></li>
+      <li><a href="reward.html">Rewards</a></li>
+      <li><a href="review.html">Reviews</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section>
+  <h2>Our Rooms</h2>
+
+  <label for="price-filter">Filter by price range (₱):</label>
+  <select id="price-filter">
+    <option value="all">All</option>
+    <option value="low">₱3,000</option>
+    <option value="mid">₱5,000</option>
+    <option value="high">₱8,000</option>
+  </select>
+
+  <div class="room-container">
+
+    <!-- ORIGINAL 3 ROOMS (UNCHANGED) -->
+    <div class="room">
+      <span class="status available">Available</span>
+      <img src="https://www.kabayanhotel.com.ph/wp-content/uploads/2016/02/kabayan-standardroom-01.jpg" alt="Standard Room">
+      <h3>Standard Room</h3>
+      <p>Cozy and comfortable with essential amenities.</p>
+      <p><strong>Price: ₱3,000/night</strong></p>
+      <a href="book.html?room=standard" class="btn">Book</a>
+    </div>
+
+    <div class="room">
+      <span class="status available">Available</span>
+      <img src="https://www.marinabaysands.com/content/dam/marinabaysands/hotel/deluxe-room/deluxe-room-gallery-1-1920x1080.jpg" alt="Deluxe Room">
+      <h3>Deluxe Room</h3>
+      <p>Spacious and stylish with a great city view.</p>
+      <p><strong>Price: ₱5,000/night</strong></p>
+      <a href="book.html?room=deluxe" class="btn">Book</a>
+    </div>
+
+    <div class="room">
+      <span class="status booked">Fully Booked</span>
+      <img src="https://img2.10bestmedia.com/Images/Photos/378649/Park-Hyatt-New-York-Manhattan-Sky-Suite-Master-Bedroom-low-res_55_660x440.jpg" alt="Suite Room">
+      <h3>Suite Room</h3>
+      <p>Luxury experience with premium services.</p>
+      <p><strong>Price: ₱8,000/night</strong></p>
+      <a href="#" class="btn" onclick="notAvailable(); return false;">Book</a>
+    </div>
+
+    <!-- ================= 3000 ================= -->
+    <div class="room">
+      <span class="status available">Available</span>
+      <img src="https://www.athensgate.gr/wp-content/uploads/athensgate-budget-rooms-photo-6.jpg" alt="">
+      <h3>Budget Cozy Room</h3>
+      <p>Simple and relaxing budget stay.</p>
+      <p><strong>Price: ₱3,000/night</strong></p>
+      <a href="book.html?room=budget" class="btn">Book</a>
+    </div>
+
+    <div class="room">
+      <span class="status available">Available</span>
+      <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2f/a3/97/4a/new-superior-room-double.jpg?w=900&h=500&s=1" alt="">
+      <h3>Classic Budget Room</h3>
+      <p>Comfortable room for short stays.</p>
+      <p><strong>Price: ₱3,000/night</strong></p>
+      <a href="book.html?room=classic" class="btn">Book</a>
+    </div>
+
+    <div class="room">
+      <span class="status available">Available</span>
+      <img src="https://silverkris.singaporeair.com/wp-content/uploads/2019/03/muji-hotel-2.jpg" alt="">
+      <h3>Minimal Room</h3>
+      <p>Clean and simple design.</p>
+      <p><strong>Price: ₱3,000/night</strong></p>
+      <a href="book.html?room=minimal" class="btn">Book</a>
+    </div>
+
+    <!-- ================= 5000 ================= -->
+    <div class="room">
+      <span class="status available">Available</span>
+      <img src="https://image-tc.galaxy.tf/wijpeg-5lxzklh9x2b20sr1bq0h16fvb/sprh-deluxe-park-room-king-01_wide.jpg?crop=0%2C76%2C1448%2C815&width=1200" alt="">
+      <h3>Deluxe City View</h3>
+      <p>Enjoy city skyline view.</p>
+      <p><strong>Price: ₱5,000/night</strong></p>
+      <a href="book.html?room=deluxecity" class="btn">Book</a>
+    </div>
+
+    <div class="room">
+      <span class="status available">Available</span>
+      <img src="https://www.hoteltentrem.com/jakarta/wp-content/uploads/sites/3/2024/12/Deluxe-Room-King-Bed-1-2200x1200.jpg" alt="">
+      <h3>Modern Deluxe</h3>
+      <p>Stylish modern hotel room.</p>
+      <p><strong>Price: ₱5,000/night</strong></p>
+      <a href="book.html?room=modern" class="btn">Book</a>
+    </div>
+
+    <div class="room">
+      <span class="status available">Available</span>
+      <img src="https://djmzubtjl6upi.cloudfront.net/wp-content/uploads/sites/3/2020/06/Roxy-Deluxe-King-Room-2022.jpg" alt="">
+      <h3>Elegant Deluxe</h3>
+      <p>Comfort + luxury combined.</p>
+      <p><strong>Price: ₱5,000/night</strong></p>
+      <a href="book.html?room=elegant" class="btn">Book</a>
+    </div>
+
+    <!-- ================= 8000 ================= -->
+    <div class="room">
+      <span class="status booked">Fully Booked</span>
+      <img src="https://www.venetianlasvegas.com/adobe/dynamicmedia/deliver/dm-aid--70ff0938-4613-4379-bc7c-0adb8adbd222/king_bed_1_1200x800.jpg" alt="">
+      <h3>Royal Suite</h3>
+      <p>Luxury premium suite.</p>
+      <p><strong>Price: ₱8,000/night</strong></p>
+      <a href="#" class="btn" onclick="notAvailable(); return false;">Book</a>
+    </div>
+
+    <div class="room">
+      <span class="status booked">Fully Booked</span>
+      <img src="https://diamondhotel.com/wp-content/uploads/2025/08/1920-x-1280-PS-5.jpg" alt="">
+      <h3>Executive Suite</h3>
+      <p>High-end executive stay.</p>
+      <p><strong>Price: ₱8,000/night</strong></p>
+      <a href="#" class="btn" onclick="notAvailable(); return false;">Book</a>
+    </div>
+
+    <div class="room">
+      <span class="status booked">Fully Booked</span>
+      <img src="https://diamondhotel.com/wp-content/uploads/2025/08/1920-x-1280-PS-1.jpg" alt="">
+      <h3>Presidential Suite</h3>
+      <p>Ultimate luxury experience.</p>
+      <p><strong>Price: ₱8,000/night</strong></p>
+      <a href="#" class="btn" onclick="notAvailable(); return false;">Book</a>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2025 Vista Hotel. All rights reserved.</p>
+</footer>
+
+<!-- NAV ACTIVE HIGHLIGHT SCRIPT -->
+<script>
+  const currentPage = window.location.pathname.split("/").pop();
+
+  const navLinks = document.querySelectorAll("nav a");
+
+  navLinks.forEach(link => {
+    if (link.getAttribute("href") === currentPage) {
+      link.classList.add("active");
+    }
+  });
+</script>
+
+<!-- PRICE FILTER FUNCTION -->
+<script>
+  const filter = document.getElementById("price-filter");
+  const rooms = document.querySelectorAll(".room");
+
+  filter.addEventListener("change", function () {
+    const value = this.value;
+
+    rooms.forEach(room => {
+      const priceText = room.querySelector("p strong")?.innerText || "";
+
+      let show = false;
+
+      if (value === "all") {
+        show = true;
+      } else if (value === "low" && priceText.includes("3,000")) {
+        show = true;
+      } else if (value === "mid" && priceText.includes("5,000")) {
+        show = true;
+      } else if (value === "high" && priceText.includes("8,000")) {
+        show = true;
+      }
+
+      room.style.display = show ? "block" : "none";
+    });
+  });
+</script>
+
+<script>
+function notAvailable() {
+  alert("❌ Sorry, this room is fully booked and not available.");
+}
+</script>
+
+</body>
+</html>
